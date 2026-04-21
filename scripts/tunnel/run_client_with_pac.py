@@ -5,6 +5,25 @@ Run local tunnel proxy and PAC server together in one process.
 Usage:
   export TUNNEL_TOKEN='...'
   python3 scripts/tunnel/run_client_with_pac.py --tunnel 54.169.43.149:7443
+
+Recommended full command:
+  export TUNNEL_TOKEN='...'
+  python3 scripts/tunnel/run_client_with_pac.py \
+    --tunnel 54.169.43.149:7443 \
+    --proxy-port 17890 \
+    --pac-port 18080 \
+    --insecure-skip-verify
+
+After startup, PAC URL is:
+  http://127.0.0.1:18080/proxy.pac
+
+macOS enable PAC:
+  networksetup -setautoproxyurl "Wi-Fi" "http://127.0.0.1:18080/proxy.pac"
+  networksetup -setautoproxystate "Wi-Fi" on
+
+Windows PowerShell enable PAC:
+  reg add "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings" /v AutoConfigURL /t REG_SZ /d "http://127.0.0.1:18080/proxy.pac" /f
+  reg add "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings" /v ProxyEnable /t REG_DWORD /d 0 /f
 """
 
 from __future__ import annotations
