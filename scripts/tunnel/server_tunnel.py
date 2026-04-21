@@ -135,7 +135,8 @@ async def main() -> None:
             "x.com,twitter.com,t.co,twimg.com,"
             "openai.com,chatgpt.com,oaistatic.com,oaiusercontent.com,"
             "platform.openai.com,featuregates.org,statsig.com,statsigapi.net,"
-            "intercom.io,intercomcdn.com,workos.com,workoscdn.com,imgix.net,sendgrid.net"
+            "intercom.io,intercomcdn.com,workos.com,workoscdn.com,imgix.net,sendgrid.net,"
+            "cursor.sh,github.com,githubusercontent.com,githubassets.com"
         ),
         help="comma-separated allowed suffixes",
     )

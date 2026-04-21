@@ -90,6 +90,33 @@ python .\client_proxy.py --tunnel 54.169.43.149:7443 --port 7890 --insecure-skip
 
 `--insecure-skip-verify` is for self-signed cert quick test. For production, use a proper cert and remove this flag.
 
+### 2.1 One Python command: tunnel + PAC together
+
+You can run one script that starts both:
+
+- local CONNECT proxy
+- local PAC endpoint
+
+```bash
+export TUNNEL_TOKEN='CHANGE_THIS_TO_RANDOM_LONG_TOKEN'
+python3 scripts/tunnel/run_client_with_pac.py \
+  --tunnel 54.169.43.149:7443 \
+  --proxy-port 17890 \
+  --pac-port 18080 \
+  --insecure-skip-verify
+```
+
+Windows PowerShell:
+
+```powershell
+$env:TUNNEL_TOKEN='CHANGE_THIS_TO_RANDOM_LONG_TOKEN'
+python .\scripts\tunnel\run_client_with_pac.py --tunnel 54.169.43.149:7443 --proxy-port 17890 --pac-port 18080 --insecure-skip-verify
+```
+
+PAC URL from this script:
+
+`http://127.0.0.1:18080/proxy.pac`
+
 ## 3) System Proxy Setup
 
 ## 3.1 macOS
